@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "13ef8dcc-911b-4fb7-b911-6e7ddcadb727",
+		"name": "blog test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://blog-lacsa.run-us-west2.goorm.io/auth/register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Log In\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "user1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://blog-lacsa.run-us-west2.goorm.io/auth/register",
+					"protocol": "https",
+					"host": [
+						"blog-lacsa",
+						"run-us-west2",
+						"goorm",
+						"io"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				},
+				"description": "register test"
+			},
+			"response": []
+		},
+		{
+			"name": "https://blog-lacsa.run-us-west2.goorm.io/auth/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"user1\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "user1",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://blog-lacsa.run-us-west2.goorm.io/auth/login",
+					"protocol": "https",
+					"host": [
+						"blog-lacsa",
+						"run-us-west2",
+						"goorm",
+						"io"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": "login"
+			},
+			"response": []
+		}
+	]
+}
